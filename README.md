@@ -110,7 +110,7 @@ RAILS_ENV=test rspec
 
 After the command, open the file coverage/index.html
 
-## API Docs1
+## API Docs
 
 Start containers:
 
