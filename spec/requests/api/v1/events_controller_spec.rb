@@ -3,12 +3,16 @@
 require 'swagger_helper'
 
 RSpec.shared_context 'when receive webhook event' do |_accept_version|
+  let(:basic_auth) { ::Base64.strict_encode64("#{ENV.fetch('USER')}:#{ENV.fetch('PASSWORD')}") }
+
   post 'webhook' do
     tags 'Webhook'
+    security [basic_auth: []]
 
     parameter name: :body, in: :body
 
     response 201, 'created' do
+      let(:Authorization) { "Basic #{basic_auth}" }
       let(:body) { JSON.parse(file_fixture('webhook_close_issue.json').read) }
 
       run_test! do |response|
@@ -20,6 +24,7 @@ RSpec.shared_context 'when receive webhook event' do |_accept_version|
     end
 
     response 422, 'unprocessable_entity' do
+      let(:Authorization) { "Basic #{basic_auth}" }
       let(:body) { {} }
 
       run_test! do |response|
@@ -27,6 +32,15 @@ RSpec.shared_context 'when receive webhook event' do |_accept_version|
 
         expect(response.status).to eq 422
         expect(body).to be_empty
+      end
+    end
+
+    response 401, 'unauthorized' do
+      let(:Authorization) { '' }
+      let(:body) { {} }
+
+      run_test! do |response|
+        expect(response.status).to eq 401
       end
     end
   end

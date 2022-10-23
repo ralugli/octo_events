@@ -32,6 +32,9 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 
+require 'dotenv'
+Dotenv.overload '.env.test'
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods

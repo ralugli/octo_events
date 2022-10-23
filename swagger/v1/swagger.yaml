@@ -13,12 +13,16 @@ paths:
       summary: webhook
       tags:
       - Webhook
+      security:
+      - basic_auth: []
       parameters: []
       responses:
         '201':
           description: created
         '422':
           description: unprocessable_entity
+        '401':
+          description: unauthorized
   "/api/v1/events/{issue_number}/issues":
     get:
       summary: events
@@ -39,11 +43,15 @@ paths:
               schema:
                 "$ref": "#/components/schemas/events_response"
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
       default: localhost:3000
 components:
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
   schemas:
     events_response:
       type: object

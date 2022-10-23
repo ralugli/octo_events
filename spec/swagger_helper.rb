@@ -17,7 +17,7 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'http://{defaultHost}',
           variables: {
             defaultHost: {
               default: 'localhost:3000',
@@ -26,6 +26,12 @@ RSpec.configure do |config|
         },
       ],
       components: {
+        securitySchemes: {
+          basic_auth: {
+            type: :http,
+            scheme: :basic,
+          },
+        },
         schemas: {
           events_response: {
             type: :object,
