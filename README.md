@@ -2,6 +2,14 @@
 
 Octo Events is an application that listens to Github Events via webhooks and expose by an api for later user.
 
+## Technologies
+
+```
+  Database: Postgresql
+  Ruby: 3.1.2
+  Rails: 7.0.4
+```
+
 ## Table of content
 
 - [Configuring a webhook integration](#webhook-integration)
@@ -102,7 +110,7 @@ RAILS_ENV=test rspec
 
 After the command, open the file coverage/index.html
 
-## API Docs
+## API Docs1
 
 Start containers:
 
@@ -110,4 +118,4 @@ Start containers:
 docker-compose up
 ```
 
-Access: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+Open: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
