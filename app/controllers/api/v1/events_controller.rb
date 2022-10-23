@@ -3,6 +3,8 @@
 module Api
   module V1
     class EventsController < ApplicationController
+      http_basic_authenticate_with name: ENV.fetch('USER'), password: ENV.fetch('PASSWORD'), only: :webhook
+
       def show
         @events = Event.where(number: params[:issue_number])
       end
