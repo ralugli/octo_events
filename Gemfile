@@ -24,4 +24,7 @@ group :development, :test do
   gem 'rubocop-rspec', '~> 2.13', '>= 2.13.2', require: false
 end
 
-gem 'simplecov', require: false, group: :test
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov', require: false
+end
