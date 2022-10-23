@@ -1,0 +1,70 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - bin/*
+    - config.ru
+    - config/application.rb
+    - config/boot.rb
+    - config/environment.rb
+    - config/environments/development.rb
+    - config/environments/production.rb
+    - config/environments/test.rb
+    - config/initializers/airbrake.rb
+    - config/initializers/application_controller_renderer.rb
+    - config/initializers/backtrace_silencers.rb
+    - config/initializers/cookies_serializer.rb
+    - config/initializers/filter_parameter_logging.rb
+    - config/initializers/inflections.rb
+    - config/initializers/mime_types.rb
+    - config/initializers/wrap_parameters.rb
+    - config/puma.rb
+    - config/routes.rb
+    - config/spring.rb
+    - db/schema.rb
+    - db/seeds/**/*
+    - db/migrate/*
+    - Gemfile.lock
+    - Rakefile
+    - script/rails
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: space
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    "%i": "[]"
+    "%I": "[]"
+    "%r": ()
+    "%w": "[]"
+    "%W": "[]"
+
+Style/PercentQLiterals:
+  EnforcedStyle: upper_case_q
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
