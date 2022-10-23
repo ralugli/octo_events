@@ -13,9 +13,11 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'rubocop-performance', '~> 1.15', require: false
   gem 'rubocop-rails_config', '~> 1.11', '>= 1.11.3', require: false
   gem 'rubocop-rspec', '~> 2.13', '>= 2.13.2', require: false
-  gem 'factory_bot_rails', '~> 6.2'
-  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
 end
+
+gem 'simplecov', require: false, group: :test
