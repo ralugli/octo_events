@@ -16,4 +16,6 @@ group :development, :test do
   gem 'rubocop-performance', '~> 1.15', require: false
   gem 'rubocop-rails_config', '~> 1.11', '>= 1.11.3', require: false
   gem 'rubocop-rspec', '~> 2.13', '>= 2.13.2', require: false
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
 end
