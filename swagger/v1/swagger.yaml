@@ -3,9 +3,59 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
-paths: {}
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  "/api/v1/events/webhook":
+    post:
+      summary: webhook
+      tags:
+      - Webhook
+      parameters: []
+      responses:
+        '201':
+          description: created
+        '422':
+          description: unprocessable_entity
+  "/api/v1/events/{issue_number}/issues":
+    get:
+      summary: events
+      tags:
+      - Events
+      parameters:
+      - name: issue_number
+        in: path
+        description: issue number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/events_response"
 servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000
+components:
+  schemas:
+    events_response:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              action:
+                type: string
+              created_at:
+                type: string
